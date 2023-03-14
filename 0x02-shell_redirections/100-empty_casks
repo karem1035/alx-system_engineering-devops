@@ -1,2 +1,2 @@
 #!/bin/bash
-find . -type -f -o -type -d -empty
+find . -type -f -o -type -d -empty | head
