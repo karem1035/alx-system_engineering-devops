@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# prints a number with switch case
 
 i=1
 
