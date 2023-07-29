@@ -1,8 +1,7 @@
 #!/usr/bin/env bash
 # trims before - in a file name
 
-temp="${PWD}/*"
-
-for i in $temp ; do
-    basename "$i" | cut -d "-" -f2
+for i in *; do
+    filename="${i#*-}"
+    echo "$filename"
 done
