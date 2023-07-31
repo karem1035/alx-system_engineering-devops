@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # The output of ps with options
 
-ps_output=$(ps -a -x -j -f)
+ps_output=$(pstree -a -x -j -f)
 
 echo "$ps_output"
