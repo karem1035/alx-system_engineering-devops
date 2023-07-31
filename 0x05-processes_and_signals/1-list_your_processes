@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-ps_output=$(ps -u -A)
+ps_output=$(ps axjf)
 
 # Display the output of 'ps'
 echo "$ps_output"
