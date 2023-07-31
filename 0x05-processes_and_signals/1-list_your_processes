@@ -1,6 +1,4 @@
 #!/usr/bin/env bash
 # The output of ps with options
 
-ps_output=$(ps -axjf)
-
-echo "$ps_output"
+ps -auxf
