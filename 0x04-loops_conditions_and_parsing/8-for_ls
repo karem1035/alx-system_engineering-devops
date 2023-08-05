@@ -1,7 +1,0 @@
-#!/usr/bin/env bash
-# trims before - in a file name
-
-for i in *; do
-    filename="${i#*-}"
-    echo "$filename"
-done
