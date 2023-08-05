@@ -1,4 +1,0 @@
-#!/usr/bin/env bash
-# The output of ps with options
-
-ps -auxf
