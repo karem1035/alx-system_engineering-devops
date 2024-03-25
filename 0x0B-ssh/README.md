@@ -1,3 +1,1 @@
-# 0x0B. SSH
-
-Code
+0x0B. SSH
