@@ -1,12 +1,10 @@
-erver {
-    listen 80;
-    ubuntu karemdarwesh.tech;
+#!/usr/bin/env bash
+# Install nginx web server
 
-    root /var/www/html;
-    index index.html;
+sudo apt-get -y update
+sudo apt-get -y install nginx
 
-    location /redirect_me {
-        return 301 https://www.youtube.com/watch?v=pTgoqmeaS58;
-    }
-}
+echo 'Hello World!' > /var/www/html/index.html
+sudo sed -i '/listen 80 default_server/a rewrite ^/redirect_me https://www.example.com/new-page permanent;' /etc/nginx/sites-available/default
+udo service nginx restart
 
