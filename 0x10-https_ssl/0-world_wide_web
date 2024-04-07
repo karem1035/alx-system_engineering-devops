@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+# # Output: The subdomain [SUB_DOMAIN] is a [RECORD_TYPE] record and points to [DESTINATION]
+
+function get_dns_record(){
+    domain=$1
+    subdomain=$2
+    full_domain="${subdomain}.${domain}"
+    output=$(dig "$full_domain" | awk '/ANSWER SECTION:/ {getline; print}')
+    output_array=($output)
+    # The subdomain [SUB_DOMAIN] is a [RECORD_TYPE] record and points to [DESTINATION]
+    echo "The subdomain $subdomain is a ${output_array[3]} record and points to ${output_array[4]}"
+}
+
+# check if 1 or 2 arguments are passed
+if [ $# -eq 1 ]; then
+    domain=$1
+    get_dns_record $domain "www"
+    get_dns_record $domain "lb-01"
+    get_dns_record $domain "web-01"
+    get_dns_record $domain "web-02"
+elif [ $# -eq 2 ]; then
+    domain=$1
+    subdomain=$2
+    get_dns_record $domain $subdomain
+fi
