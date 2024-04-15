@@ -1,0 +1,70 @@
+#### This article Will cover:
+
+- DNS request
+- TCP/IP
+- Firewall
+- HTTPS/SSL
+- Load-balancer
+- Web server
+- Application server
+- Database
+
+---
+
+### 1. DNS request:
+
+After typing `google.com` on the browser tab and press enter
+
+- The Browser needs to know where is the server of google.com to use it?
+- The location of the server it's IP address.
+- in order to know the IP Address of google.com the browser sends a DNS Query Request to the DNS resolver server.
+- Then the DNS resolver replies with DNS Query response contains the IP address of google (8.8.8.8)
+---
+
+### 2. TCP/IP:
+
+- After the browser(client) gets the IP address of the google.com server (e.g., 8.8.8.8), it initiates a TCP/IP Three-Way Handshake
+- to ensure that both parties are ready and able to communicate before any data is transmitted.
+
+---
+
+### 3. Firewall:
+
+- There are 2 Types of Firewalls 1. Client-Side Firewall: Allow or Block traffic or some applications for security measures, most of the time it is a firewall software 2. Server-Side Firewall: The ISP and the Service providers install Hardware firewalls and software firewall too, too filter incoming traffic to protect their customers and their data
+---
+
+### 4. HTTPS/SSL:
+
+- When we see "https" at the beginning of the web address, it means the connection is secure.
+- HTTPS uses Secure Sockets Layer (SSL) to encrypt the communication between your browser and Google's server.
+- This encryption protects your data, like passwords or search queries, from being intercepted by anyone else on the network.
+
+---
+
+### 5. Load Balancer (Possible):
+
+- Large websites like Google often use load balancers.
+- These are like traffic directors that distribute incoming requests across multiple servers.
+- This ensures smooth performance by preventing any single server from getting overloaded.
+
+---
+
+### 6. Web Server:
+
+- The request from your browser reaches a web server on Google's side.
+- The web server understands HTTP (Hypertext Transfer Protocol), the language of the web.
+- It interprets your request (to access google.com) and retrieves the necessary files for the webpage.
+
+---
+
+### 7. Application Server:
+
+- In some cases, the web server might hand off the request to an application server.
+- This application server might handle dynamic content, like personalized search results or news feeds tailored to you.
+
+---
+
+### 8. Database:
+
+- Depending on what you're trying to access on Google, the application server might need to fetch data from a database.
+- This database stores information like website content, user accounts, or search results.
