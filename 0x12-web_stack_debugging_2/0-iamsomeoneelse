@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+# whoami arg
+if [ $# -eq 0 ]; then
+    username="root"
+else
+    username="$1"
+fi
+sudo -u "$username" whoami
