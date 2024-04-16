@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+# Run Nginx as Nginx
+apt-get update
+apt-get install -y nginx
+sed -i 's/^user .*/user nginx;/' /etc/nginx/nginx.conf
+sed -i '/listen 80;/a listen 8080 default_server;' /etc/nginx/sites-available/default
+chmod 644 /etc/nginx/nginx.conf
+systemctl restart nginx
