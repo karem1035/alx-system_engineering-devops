@@ -5,24 +5,26 @@ import urllib.request
 from sys import argv
 
 
-# Getting the employee id from the argument
-employee_id = argv[1]
+if __name__ == "__main__":
+    # Getting the employee id from the argument
+    employee_id = argv[1]
 
-# Constructing URLs
-url = f'https://jsonplaceholder.typicode.com/users/{employee_id}'
-todos_url = f'{url}/todos'
+    # Constructing URLs
+    url = f'https://jsonplaceholder.typicode.com/users/{employee_id}'
+    todos_url = f'{url}/todos'
 
-# Employee names
-employee_name = json.loads(urllib.request.urlopen(
-    url).read().decode("utf-8"))['name']
+    # Employee names
+    employee_name = json.loads(urllib.request.urlopen(
+        url).read().decode("utf-8"))['name']
 
-# Todos
-todos = json.loads(urllib.request.urlopen(todos_url).read().decode("utf-8"))
+    # Todos
+    todos = json.loads(urllib.request.urlopen(
+        todos_url).read().decode("utf-8"))
 
-# Counting the completed tasks
-completed = sum(1 for i in todos if i['completed'])
+    # Counting the completed tasks
+    completed = sum(1 for i in todos if i['completed'])
 
-# Priting the output
-print(
-    f"Employee {employee_name} is done with tasks({completed}/{len(todos)}):")
-[print(f"\t{todo['title']}") for todo in todos if todo['completed']]
+    # Priting the output
+    print("Employee {} is done with tasks({}/{}):"
+          .format(employee_name, completed, len(todos)))
+    [print(f"\t{todo['title']}") for todo in todos if todo['completed']]
