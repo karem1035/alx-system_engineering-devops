@@ -3,6 +3,7 @@
 
 if __name__ == "__main__":
 
+    import json
     import urllib.request
     from sys import argv
     # Getting the employee id from the argument
