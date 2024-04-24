@@ -27,4 +27,7 @@ if __name__ == "__main__":
     # Priting the output
     print("Employee {} is done with tasks({}/{}):"
           .format(employee_name, completed, len(todos)))
-    [print(f"     {todo['title']}") for todo in todos if todo['completed']]
+
+    for i in todos:
+        if i['completed']:
+            print(f"\t {i['title']}".expandtabs(4))
