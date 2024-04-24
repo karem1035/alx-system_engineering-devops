@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-# A script that using a employee ID, returns information about his/her TODO
+"""A script that using a employee ID, returns information about his/her TODO"""
 import json
 import urllib.request
 from sys import argv
