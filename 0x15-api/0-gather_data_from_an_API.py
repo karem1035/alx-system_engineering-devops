@@ -1,8 +1,7 @@
 #!/usr/bin/python3
 """A script that using a employee ID, returns information about his/her TODO"""
 
-import json
-import urllib.request
+import requests
 from sys import argv
 
 if __name__ == "__main__":
@@ -14,20 +13,12 @@ if __name__ == "__main__":
     todos_url = f'{url}/todos'
 
     # Employee names
-    employee_name = json.loads(urllib.request.urlopen(
-        url).read().decode("utf-8"))['name']
-
-    # Todos
-    todos = json.loads(urllib.request.urlopen(
-        todos_url).read().decode("utf-8"))
-
-    # Counting the completed tasks
+    employee_name = requests.get(url).json()['name']
+    todos = requests.get(todos_url).json()
     completed = sum(1 for i in todos if i['completed'])
 
-    # Priting the output
-    print("Employee {} is done with tasks({}/{}):"
-          .format(employee_name, completed, len(todos)))
-
+    print("Employee {} is done with tasks({}/{}):".format(employee_name,
+          completed, len(todos)))
     for i in todos:
         if i['completed']:
-            print(f"\t {i['title']}".expandtabs(4))
+            print("\t {}".format(i['title']))
