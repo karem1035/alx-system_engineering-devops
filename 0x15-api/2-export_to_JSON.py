@@ -1,19 +1,32 @@
 #!/usr/bin/python3
-"""Exports to-do list information for a given employee ID to JSON format."""
+"""A script that using a employee ID, returns information about his/her TODO"""
+
 import json
 import requests
-import sys
+from sys import argv
 
 if __name__ == "__main__":
-    user_id = sys.argv[1]
-    url = "https://jsonplaceholder.typicode.com/"
-    user = requests.get(url + "users/{}".format(user_id)).json()
-    username = user.get("username")
-    todos = requests.get(url + "todos", params={"userId": user_id}).json()
+    # Getting the employee id from the argument
+    employee_id = argv[1]
 
-    with open("{}.json".format(user_id), "w") as jsonfile:
-        json.dump({user_id: [{
-                "task": t.get("title"),
-                "completed": t.get("completed"),
+    # Constructing URLs
+    url = f'https://jsonplaceholder.typicode.com/users/{employee_id}'
+    todos_url = f'{url}/todos'
+    json_file = f'{employee_id}.json'
+
+    # Employee names
+    username = requests.get(url).json()['username']
+    todos = requests.get(todos_url).json()
+    array = []
+    for i in todos:
+        array.append(
+            {
+                "task": i['title'],
+                "completed": i['completed'],
                 "username": username
-            } for t in todos]}, jsonfile)
+            }
+        )
+    with open(json_file, "w") as file:
+        json.dump({
+            employee_id: array
+        }, file)
