@@ -1,11 +1,10 @@
 #!/usr/bin/python3
 """A script that using a employee ID, returns information about his/her TODO"""
-import json
-import urllib.request
-from sys import argv
-
 
 if __name__ == "__main__":
+
+    import urllib.request
+    from sys import argv
     # Getting the employee id from the argument
     employee_id = argv[1]
 
