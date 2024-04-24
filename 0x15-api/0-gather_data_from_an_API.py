@@ -1,14 +1,28 @@
 #!/usr/bin/python3
-"""Returns to-do list information for a given employee ID."""
-import requests
-import sys
+# A script that using a employee ID, returns information about his/her TODO
 
-if __name__ == "__main__":
-    url = "https://jsonplaceholder.typicode.com/"
-    user = requests.get(url + "users/{}".format(sys.argv[1])).json()
-    todos = requests.get(url + "todos", params={"userId": sys.argv[1]}).json()
+from sys import argv
+import urllib.request
+import json
 
-    completed = [t.get("title") for t in todos if t.get("completed") is True]
-    print("Employee {} is done with tasks({}/{}):".format(
-        user.get("name"), len(completed), len(todos)))
-    [print("\t {}".format(c)) for c in completed]
+# Getting the employee id from the argument
+employee_id = argv[1]
+
+# Constructing URLs
+url = f'https://jsonplaceholder.typicode.com/users/{employee_id}'
+todos_url = f'{url}/todos'
+
+# Employee names
+employee_name = json.loads(urllib.request.urlopen(
+    url).read().decode("utf-8"))['name']
+
+# Todos
+todos = json.loads(urllib.request.urlopen(todos_url).read().decode("utf-8"))
+
+# Counting the completed tasks
+completed = sum(1 for i in todos if i['completed'])
+
+# Priting the output
+print(
+    f"Employee {employee_name} is done with tasks({completed}/{len(todos)}):")
+[print(f"\t{todo['title']}") for todo in todos if todo['completed']]
