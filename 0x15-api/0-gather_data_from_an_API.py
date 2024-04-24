@@ -1,11 +1,11 @@
 #!/usr/bin/python3
 """A script that using a employee ID, returns information about his/her TODO"""
 
-if __name__ == "__main__":
+import json
+import urllib.request
+from sys import argv
 
-    import json
-    import urllib.request
-    from sys import argv
+if __name__ == "__main__":
     # Getting the employee id from the argument
     employee_id = argv[1]
 
@@ -27,4 +27,4 @@ if __name__ == "__main__":
     # Priting the output
     print("Employee {} is done with tasks({}/{}):"
           .format(employee_name, completed, len(todos)))
-    [print(f"\t{todo['title']}") for todo in todos if todo['completed']]
+    [print(f"     {todo['title']}") for todo in todos if todo['completed']]
