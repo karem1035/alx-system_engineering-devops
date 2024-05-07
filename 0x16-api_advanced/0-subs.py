@@ -1,5 +1,7 @@
 #!/usr/bin/python3
-""" returns the number of subscribers for a given subreddit. """
+"""
+returns the number of subscribers for a given subreddit.
+"""
 
 import requests
 
@@ -7,14 +9,11 @@ import requests
 def number_of_subscribers(subreddit):
     """
     Function that queries the Reddit API
-    - If not a valid subreddit, return 0.
     """
-    req = requests.get(
-        "https://www.reddit.com/r/{}/about.json".format(subreddit),
-        headers={"User-Agent": "Custom"},
-    )
 
-    if req.status_code == 200:
-        return req.json().get("data").get("subscribers")
+    res = requests.get(f'https://www.reddit.com/r/{subreddit}/about.json')
+    if res.status_code == 200:
+        data = res.json().get('data').get('subscribers')
+        return (data)
     else:
-        return 0
+        return (0)
